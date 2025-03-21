@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - LuxWatch</title>
+    <meta name="description" content="Stay updated with the latest news from LuxWatch">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .main-nav a.active {
+            color: #007bff;
+            font-weight: 600;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .sign-in-button {
+            background: #007bff;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .button.outline {
+            background: none;
+            border: 1px solid #007bff;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .page-header {
+            padding: 40px 0;
+            text-align: center;
+            background: #f9f9f9;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-header .lead {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .news {
+            padding: 60px 0;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .news-content .date {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .news-content p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="logo-icon">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    <span class="logo-text">LuxWatch</span>
+                </div>
+
+                <nav class="main-nav">
+                    <a href="./index.html">Home</a>
+                    <a href="./catalog.html">Catalog</a>
+                    <a href="./news.html" class="active">News</a>
+                    <a href="./about.html">About</a>
+                    <a href="./contact.html">Contact</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="icon-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.3-4.3" />
+                        </svg>
+                    </button>
+                    <button class="icon-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                            <path d="M3 6h18" />
+                            <path d="M16 10a4 4 0 0 1-8 0" />
+                        </svg>
+                    </button>
+                    <a href="./register.html" class="sign-in-button">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Latest News</h1>
+            <p class="lead">Stay informed about new releases and updates from LuxWatch</p>
+        </div>
+    </section>
+
+    <section class="news">
+        <div class="container">
+            <div class="news-grid">
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=3180&auto=format&fit=crop"
+                        alt="New Collection Launch" class="news-image">
+                    <div class="news-content">
+                        <h3>New Collection Launch</h3>
+                        <p class="date">March 15, 2025</p>
+                        <p>We’re excited to announce our latest collection of luxury timepieces, blending innovation
+                            with timeless design.</p>
+                        <a href="#" class="button outline">Read More</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=3087&auto=format&fit=crop"
+                        alt="Partnership Announcement" class="news-image">
+                    <div class="news-content">
+                        <h3>Partnership Announcement</h3>
+                        <p class="date">March 10, 2025</p>
+                        <p>LuxWatch partners with a renowned watchmaker to bring exclusive designs to our customers.</p>
+                        <a href="#" class="button outline">Read More</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?q=80&w=3174&auto=format&fit=crop"
+                        alt="Spring Sale" class="news-image">
+                    <div class="news-content">
+                        <h3>Spring Sale Now Live</h3>
+                        <p class="date">March 1, 2025</p>
+                        <p>Enjoy up to 20% off selected timepieces in our Spring Sale, available for a limited time.</p>
+                        <a href="#" class="button outline">Read More</a>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for exclusive offers and the latest updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="button primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

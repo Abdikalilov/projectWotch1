@@ -8,6 +8,69 @@
     <meta name="description" content="Browse our exclusive collection of luxury watches">
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Inline styles for cart-specific elements only -->
+    <style>
+        .cart-toggle {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+        }
+
+        .cart-content {
+            background: #fff;
+            width: 90%;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .cart-content h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-items div {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-total {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,7 +92,7 @@
                     <a href="./catalog.html" class="active">Catalog</a>
                     <a href="news.html">News</a>
                     <a href="./about.html">About</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="./contact.html">Contact</a>
                 </nav>
 
                 <div class="header-actions">
@@ -40,19 +103,29 @@
                             <path d="m21 21-4.3-4.3" />
                         </svg>
                     </button>
-                    <button class="icon-button">
+                    <button class="icon-button cart-toggle" onclick="toggleCart()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-                            <path d="M3 6h18" />
-                            <path d="M16 10a4 4 0 0 1-8 0" />
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" strokeರೀನಾಸ್ stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2 L3 6 v14 a2 2 0 0 0 2 2 h14 a2 2 0 0 0 2-2 V6 l-3-4 Z" />
+                            <path d="M3 6 h18" />
+                            <path d="M16 10 a4 4 0 0 1-8 0" />
                         </svg>
+                        <span class="cart-count">0</span>
                     </button>
                     <a href="./register.html" class="sign-in-button">Sign In</a>
                 </div>
             </div>
         </div>
     </header>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <h2>Your Cart</h2>
+            <div class="cart-items" id="cartItems"></div>
+            <p class="cart-total">Total: $<span id="cartTotal">0.00</span></p>
+            <button class="button primary" onclick="closeCart()">Close</button>
+        </div>
+    </div>
 
     <section class="page-header">
         <div class="container">
@@ -89,7 +162,7 @@
                     <div class="product-details">
                         <h3>Classic Timepiece</h3>
                         <p class="price">$1,299.99</p>
-                        <button class="button primary">Add to Cart</button>
+                        <button class="button primary" onclick="addToCart('Classic Timepiece', 1299.99)">Add to Cart</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -98,21 +171,70 @@
                     <div class="product-details">
                         <h3>Sport Edition</h3>
                         <p class="price">$899.99</p>
-                        <button class="button primary">Add to Cart</button>
+                        <button class="button primary" onclick="addToCart('Sport Edition', 899.99)">Add to Cart</button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?q=80&w=3174&auto=format&fit=crop"
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR91e9Ajm9xF8Lon98Y6rJ4w7lGm9BNW1TV9g&s"
                         alt="Luxury Watch 3" class="product-image">
                     <div class="product-details">
                         <h3>Elegant Series</h3>
                         <p class="price">$2,499.99</p>
-                        <button class="button primary">Add to Cart</button>
+                        <button class="button primary" onclick="addToCart('Elegant Series', 2499.99)">Add to Cart</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for exclusive offers and the latest updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="button primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCount = document.querySelector('.cart-count');
+
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                cartItems.appendChild(itemDiv);
+                total += item.price;
+            });
+
+            cartTotal.textContent = total.toFixed(2);
+            cartCount.textContent = cart.length;
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>
