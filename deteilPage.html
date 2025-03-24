@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<link rel="icon" href="./img/часыПроект.jpg" type="image/x-icon">
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="logo-icon">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        <span class="logo-text">LuxWatch</span>
+                    </div>
+
+                    <nav class="main-nav">
+                        <a href="./catalog.html">Catalog</a>
+                        <a href="/html/news.html">News</a>
+                        <a href="./about.html">About</a>
+                        <a href="./contact.html">Contact</a>
+                    </nav>
+
+                    <div class="header-actions">
+                        <button class="icon-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8" />
+                                <path d="m21 21-4.3-4.3" />
+                            </svg>
+                        </button>
+                        <button class="icon-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                                <path d="M3 6h18" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                        </button>
+                        <button class="icon-button menu-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <line x1="4" x2="20" y1="12" y2="12" />
+                                <line x1="4" x2="20" y1="6" y2="6" />
+                                <line x1="4" x2="20" y1="18" y2="18" />
+                            </svg>
+                        </button>
+                        <a style="text-decoration: none;" href="./register.html"><button class="sign-in-button">Sign
+                                In</button></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <br>
+
+
+        <!-- Improved Detail Section -->
+        <section class="detail-section">
+            <div class="detail-container">
+                <div class="detail-image">
+                    <img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?q=80&w=3174&auto=format&fit=crop"
+                        alt="Classic Timepiece">
+                </div>
+                <div class="detail-content">
+                    <h3>Elegant Series</h3>
+                    <p>Серия Elegant воплощает изысканность и роскошь, разработанную для тех, кто ценит в жизни все
+                        самое лучшее. Эти часы, выполненные из полированного розового золота и устойчивого к царапинам
+                        сапфирового стекла, излучают непреходящую красоту. Они оснащены швейцарским кварцевым
+                        механизмом, обеспечивающим исключительную точность и надежность в любой момент.</p>
+                    <h4>Технические характеристики:</h4>
+                    <ul>
+                        <li>Материал корпуса: розовое золото</li>
+                        <li>Механизм: швейцарский кварцевый</li>
+                        <li>Водонепроницаемость: 50м</li>
+                        <li>Ремешок: натуральная кожа аллигатор</li>
+                        <li>Диаметр: 40мм</li>
+                    </ul>
+                    <p class="price">$2,499.99</p>
+                    <div class="product-reviews">
+                        <span>★★★★★ (4.9/5)</span>
+                        <p>«Совершенно потрясающий дизайн, стоит каждой потраченной копейки!» – Майкл Р.</p>
+                    </div>
+                    <button class="button primary" onclick="addToCart('Classic Timepiece', 1299.99)">Add to
+                        Cart</button>
+                </div>
+            </div>
+        </section>
+
+
+        <br>
+
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter for exclusive offers and the latest updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="button primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
